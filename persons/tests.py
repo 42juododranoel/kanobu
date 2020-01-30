@@ -1,12 +1,6 @@
-from django.contrib.auth.models import User
 import pytest
 
 from persons.models import Person
-
-
-@pytest.fixture
-def user():
-    return User.objects.create_user(username='test')
 
 
 @pytest.mark.django_db
