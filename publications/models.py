@@ -24,7 +24,7 @@ class Publication(BaseModel):
     )
 
     content = models.TextField(
-        verbose_name=_('Subtitle'),
+        verbose_name=_('Content'),
     )
 
     author = models.CharField(
