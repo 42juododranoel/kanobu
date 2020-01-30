@@ -1,7 +1,9 @@
+from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from kanobu.models import BaseModel
+from opinions.models import Opinion
 
 
 class Publication(BaseModel):
@@ -47,6 +49,11 @@ class Publication(BaseModel):
         verbose_name=_('Published at'),
         blank=True,
         null=True,
+    )
+
+    opinions = GenericRelation(
+        Opinion,
+        related_query_name='publications'
     )
 
     @property

@@ -45,3 +45,9 @@ def test_category_properties(publication, category):
 @freeze_time('2001-01-01 12:00')  # Same as in fixture
 def test_created_at_auto_now_add(publication):
     assert publication.created_at == timezone.now()
+
+
+@pytest.mark.django_db
+def test_has_opinion_relation(publication, publication_opinion):
+    publication_opinion.update(object_id=publication.id)
+    assert publication_opinion in publication.opinions.all()

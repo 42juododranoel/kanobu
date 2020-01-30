@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'persons',
     'publications',
     'comments',
+    'opinions',
 ]
 
 MIDDLEWARE = [
