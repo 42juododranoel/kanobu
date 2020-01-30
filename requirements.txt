@@ -1,2 +1,5 @@
 django==2.2  # Web framework
-
+djangorestframework==3.11.0  # REST API
+freezegun==0.3.7  # Freeze time in tests
+mixer==6.1.3  # Create model instances in tests
+pytest-django==3.8.0  # Run tests
