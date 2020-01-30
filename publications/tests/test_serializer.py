@@ -13,6 +13,6 @@ def publication():
 
 
 @pytest.mark.django_db
-def test_serialize_model(publication):
+def test_serialize_publication(publication):
     serializer = PublicationSerializer(publication)
     assert serializer.data  # No errors

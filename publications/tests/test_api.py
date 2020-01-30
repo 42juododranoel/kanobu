@@ -1,9 +1,6 @@
 import pytest
 from rest_framework.test import APIClient
 
-from publications.api.viewsets import PublicationViewSet
-from publications.models import Publication
-
 
 @pytest.fixture
 def client():
