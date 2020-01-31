@@ -1,11 +1,11 @@
-from rest_framework import mixins, viewsets
+from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from opinions.api.serializers import OpinionSerializer
 from opinions.models import Opinion
 
 
-class OpinionViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+class OpinionViewSet(viewsets.ModelViewSet):
     queryset = Opinion.objects.all()
     serializer_class = OpinionSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
