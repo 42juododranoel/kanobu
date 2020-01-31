@@ -6,13 +6,15 @@ from opinions.models import Opinion
 @pytest.mark.django_db
 def test_list_publications(api_client, publication):
     response = api_client.get('/api/publications/')
-    assert response.json()[0]['id'] == 1
+    assert response.status_code == 200
+    assert response.json()[0]['id'] == publication.id
 
 
 @pytest.mark.django_db
 def test_retrieve_publication(api_client, publication):
     response = api_client.get(f'/api/publications/{publication.id}/')
-    assert response.json()['id'] == 1
+    assert response.status_code == 200
+    assert response.json()['id'] == publication.id
 
 
 @pytest.mark.django_db
