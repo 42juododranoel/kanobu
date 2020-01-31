@@ -1,5 +1,5 @@
-from django.contrib.contenttypes.models import ContentType
 import pytest
+from django.contrib.contenttypes.models import ContentType
 
 
 @pytest.mark.django_db
@@ -10,7 +10,7 @@ def test_list_opinions(api_client, opinion):
 
 @pytest.mark.django_db
 def test_retrieve_opinion(api_client, opinion):
-    response = api_client.get('/api/opinions/1/')
+    response = api_client.get(f'/api/opinions/{opinion.id}/')
     assert response.json()['id'] == 1
 
 

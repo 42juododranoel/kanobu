@@ -1,9 +1,9 @@
 from django.db.models import Count, Q
-from rest_framework import viewsets, mixins
+from rest_framework import mixins, viewsets
 
 from opinions.models import Opinion
-from publications.models import Publication
 from publications.api.serializers import PublicationSerializer
+from publications.models import Publication
 
 
 class PublicationViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):

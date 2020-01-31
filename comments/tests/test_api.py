@@ -9,7 +9,7 @@ def test_list_comments(api_client, comment):
 
 @pytest.mark.django_db
 def test_retrieve_comment(api_client, comment):
-    response = api_client.get('/api/comments/1/')
+    response = api_client.get(f'/api/comments/{comment.id}/')
     assert response.json()['id'] == 1
 
 

@@ -1,5 +1,5 @@
-from django.contrib.contenttypes.models import ContentType
 import pytest
+from django.contrib.contenttypes.models import ContentType
 
 from opinions.models import Opinion
 

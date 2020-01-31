@@ -1,8 +1,8 @@
-from rest_framework import viewsets, mixins
+from rest_framework import mixins, viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
-from opinions.models import Opinion
 from opinions.api.serializers import OpinionSerializer
+from opinions.models import Opinion
 
 
 class OpinionViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):

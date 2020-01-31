@@ -1,8 +1,8 @@
-from rest_framework import viewsets, mixins
+from rest_framework import mixins, viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
-from comments.models import Comment
 from comments.api.serializers import CommentSerializer
+from comments.models import Comment
 
 
 class CommentViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):

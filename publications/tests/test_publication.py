@@ -1,6 +1,6 @@
+import pytest
 from django.utils import timezone
 from freezegun import freeze_time
-import pytest
 
 from publications.models import Publication
 

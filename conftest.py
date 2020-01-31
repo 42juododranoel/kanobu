@@ -1,13 +1,13 @@
+import pytest
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from freezegun import freeze_time
 from mixer.backend.django import mixer
-import pytest
 from rest_framework.test import APIClient
 
 from comments.models import Comment
-from publications.models import Publication
 from opinions.models import Opinion
+from publications.models import Publication
 
 
 @pytest.fixture
