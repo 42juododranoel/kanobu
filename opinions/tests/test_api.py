@@ -24,8 +24,8 @@ def test_cant_create_opinion_unauthorized(api_client, publication):
 
 
 @pytest.mark.django_db
-def test_create_opinion_authorized(auth_api_client, publication):
-    payload = {'category': 0, 'object_id': publication.id, 'content_type': 9}
+def test_create_opinion_authorized(auth_api_client, publication, person):
+    payload = {'category': 0, 'object_id': publication.id, 'content_type': 9, 'owner': person.id}
     response = auth_api_client.post('/api/opinions/', data=payload)
     assert response.status_code == 201
     assert response.json()['id'] == 1
@@ -54,8 +54,8 @@ def test_cant_update_opinion_unauthorized(api_client, opinion):
 
 
 @pytest.mark.django_db
-def test_update_opinion_authorized(auth_api_client, opinion, publication):
-    payload = {'category': opinion.category, 'object_id': publication.id, 'content_type': 9}
+def test_update_opinion_authorized(auth_api_client, opinion, publication, person):
+    payload = {'category': opinion.category, 'object_id': publication.id, 'content_type': 9, 'owner': person.id}
     response = auth_api_client.put(f'/api/opinions/{opinion.id}/', payload)
 
     assert response.status_code == 200

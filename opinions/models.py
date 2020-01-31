@@ -4,6 +4,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from kanobu.models import BaseModel
+from persons.models import Person
 
 
 class Opinion(BaseModel):
@@ -27,6 +28,12 @@ class Opinion(BaseModel):
         verbose_name=_('Category'),
         default=CATEGORIES[0][0],
         choices=CATEGORIES,
+    )
+
+    owner = models.ForeignKey(
+        Person,
+        on_delete=models.CASCADE,
+        verbose_name=_('Owner'),
     )
 
     content_type = models.ForeignKey(

@@ -8,7 +8,7 @@ from django.db.utils import IntegrityError
     [
         'text',
         'publication',
-        'person',
+        'owner',
     ]
 )
 def test_not_none_attributes(comment, attribute):

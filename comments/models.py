@@ -14,10 +14,10 @@ class Comment(BaseModel):
     text = models.TextField(
         verbose_name=_('Text')
     )
-    person = models.ForeignKey(
+    owner = models.ForeignKey(
         Person,
         on_delete=models.CASCADE,
-        verbose_name=_('Person'),
+        verbose_name=_('Owner'),
     )
     publication = models.ForeignKey(
         Publication,

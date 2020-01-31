@@ -9,6 +9,6 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'text',
-            'person',
+            'owner',
             'publication',
         ]

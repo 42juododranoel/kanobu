@@ -9,6 +9,7 @@ class OpinionSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'category',
+            'owner',
             'object_id',
             'content_type',
         ]
