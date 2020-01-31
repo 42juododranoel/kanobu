@@ -48,11 +48,11 @@ def opinion():
 
 
 @pytest.fixture
-def opinion_factory():
-    def create_opinion(**attributes):
+def create_opinion():
+    def _create_opinion(**attributes):
         return mixer.blend(Opinion, **attributes)
 
-    return create_opinion
+    return _create_opinion
 
 
 @pytest.fixture
