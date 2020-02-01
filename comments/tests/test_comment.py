@@ -1,8 +1,9 @@
 import pytest
 from django.db.utils import IntegrityError
 
+pytestmark = [pytest.mark.django_db]
 
-@pytest.mark.django_db
+
 @pytest.mark.parametrize(
     'attribute',
     [

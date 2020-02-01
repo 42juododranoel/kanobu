@@ -2,22 +2,21 @@ import pytest
 
 from opinions.models import Opinion
 
+pytestmark = [pytest.mark.django_db]
 
-@pytest.mark.django_db
+
 def test_list_publications(api_client, publication):
     response = api_client.get('/api/publications/')
     assert response.status_code == 200
     assert response.json()[0]['id'] == publication.id
 
 
-@pytest.mark.django_db
 def test_retrieve_publication(api_client, publication):
     response = api_client.get(f'/api/publications/{publication.id}/')
     assert response.status_code == 200
     assert response.json()['id'] == publication.id
 
 
-@pytest.mark.django_db
 @pytest.mark.parametrize(
     'count_attribute, expected_value',
     [
@@ -32,7 +31,6 @@ def test_list_counts_opinions(api_client, publication, create_opinion, count_att
     assert response.json()[0][count_attribute] == expected_value
 
 
-@pytest.mark.django_db
 @pytest.mark.parametrize(
     'count_attribute, expected_value',
     [
