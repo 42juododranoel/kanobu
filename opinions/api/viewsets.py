@@ -10,3 +10,6 @@ class OpinionViewSet(viewsets.ModelViewSet):
     queryset = Opinion.objects.all()
     serializer_class = OpinionSerializer
     permission_classes = [IsAuthenticatedOrReadOnly & (IsOwner | ReadOnly)]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)

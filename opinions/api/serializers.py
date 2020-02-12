@@ -13,3 +13,4 @@ class OpinionSerializer(serializers.ModelSerializer):
             'object_id',
             'content_type',
         ]
+        read_only_fields = ['owner']
