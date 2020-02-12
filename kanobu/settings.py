@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'publications',
     'comments',
     'opinions',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

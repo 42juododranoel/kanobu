@@ -3,16 +3,16 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from freezegun import freeze_time
 from mixer.backend.django import mixer
-from rest_framework.test import APIClient
 
 from comments.models import Comment
+from kanobu.utils.api_client import UserAPIClient
 from opinions.models import Opinion
 from publications.models import Publication
 
 
 @pytest.fixture
 def api_client():
-    return APIClient()
+    return UserAPIClient()
 
 
 @pytest.fixture
