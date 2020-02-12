@@ -9,3 +9,6 @@ class CommentViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retr
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)

@@ -12,3 +12,4 @@ class CommentSerializer(serializers.ModelSerializer):
             'owner',
             'publication',
         ]
+        read_only_fields = ['owner']
