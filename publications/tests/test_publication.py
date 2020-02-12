@@ -36,6 +36,7 @@ def test_category_article_by_default(publication):
 )
 def test_category_properties(publication, category):
     publication.update(category=getattr(Publication, f'CATEGORY_{category.upper()}'))
+
     assert getattr(publication, f'is_{category}')
 
 
@@ -46,4 +47,5 @@ def test_created_at_auto_now_add(publication):
 
 def test_has_opinion_relation(publication, publication_opinion):
     publication_opinion.update(object_id=publication.id)
+
     assert publication_opinion in publication.opinions.all()
