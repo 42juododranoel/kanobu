@@ -1,5 +1,6 @@
 import pytest
 from django.contrib.contenttypes.models import ContentType
+from django.db.utils import IntegrityError
 
 from opinions.models import Opinion
 
@@ -35,3 +36,17 @@ def test_generic_foreign_key_to_publication(opinion, publication):
 
     assert opinion.content_type == ContentType.objects.get_for_model(publication)
     assert opinion.object_id == publication.id
+
+
+def test_cant_create_two_opinions_with_same_publication(publication, create_opinion):
+    opinion = create_opinion(content_object=publication)
+
+    with pytest.raises(IntegrityError):
+        create_opinion(content_object=publication, owner=opinion.owner)
+
+
+def test_cant_create_two_opinions_with_same_comment(comment, create_opinion):
+    opinion = create_opinion(content_object=comment)
+
+    with pytest.raises(IntegrityError):
+        create_opinion(content_object=comment, owner=opinion.owner)

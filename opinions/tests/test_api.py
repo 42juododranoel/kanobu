@@ -24,6 +24,26 @@ def test_cant_create_opinion_unauthorized(api_client, publication):
     assert response.status_code == 403
 
 
+def test_cant_create_two_opinions_with_same_publication(auth_api_client, publication):
+    payload = {'category': 0, 'object_id': publication.id, 'content_type': 8}
+    auth_api_client.post('/api/opinions/', data=payload)
+
+    response = auth_api_client.post('/api/opinions/', data=payload)
+
+    assert response.status_code == 400
+    assert response.json()['non_field_errors'] == ['The fields content_type, object_id must make a unique set.']
+
+
+def test_cant_create_two_opinions_with_same_comment(auth_api_client, comment):
+    payload = {'category': 0, 'object_id': comment.id, 'content_type': 9}
+    auth_api_client.post('/api/opinions/', data=payload)
+
+    response = auth_api_client.post('/api/opinions/', data=payload)
+
+    assert response.status_code == 400
+    assert response.json()['non_field_errors'] == ['The fields content_type, object_id must make a unique set.']
+
+
 def test_create_opinion_authorized(auth_api_client, publication):
     payload = {'category': 0, 'object_id': publication.id, 'content_type': 9}
     response = auth_api_client.post('/api/opinions/', data=payload)

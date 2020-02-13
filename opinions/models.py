@@ -43,6 +43,9 @@ class Opinion(BaseModel):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey()
 
+    class Meta:
+        unique_together = ['content_type', 'object_id']
+
     @property
     def is_like(self):
         return self.category == self.CATEGORY_LIKE
