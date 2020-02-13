@@ -50,3 +50,19 @@ def test_cant_create_two_opinions_with_same_comment(comment, create_opinion):
 
     with pytest.raises(IntegrityError):
         create_opinion(content_object=comment, owner=opinion.owner)
+
+
+def test_create_multiple_opinions_with_same_publication(publication, create_opinion):
+    opinion_one = create_opinion(content_object=publication)
+
+    opinion_two = create_opinion(content_object=publication)  # No IntegrityError
+
+    assert opinion_one.owner != opinion_two.owner
+
+
+def test_create_multiple_opinions_with_same_comment(comment, create_opinion):
+    opinion_one = create_opinion(content_object=comment)
+
+    opinion_two = create_opinion(content_object=comment)  # No IntegrityError
+
+    assert opinion_one.owner != opinion_two.owner

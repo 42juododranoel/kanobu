@@ -44,7 +44,7 @@ class Opinion(BaseModel):
     content_object = GenericForeignKey()
 
     class Meta:
-        unique_together = ['content_type', 'object_id']
+        unique_together = ['content_type', 'object_id', 'owner']
 
     @property
     def is_like(self):
