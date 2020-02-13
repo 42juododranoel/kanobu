@@ -7,7 +7,7 @@ from opinions.api.viewsets import OpinionViewSet
 from publications.api.viewsets import PublicationViewSet
 
 router = routers.DefaultRouter()
-router.register('publications', PublicationViewSet)
+router.register('publications', PublicationViewSet, basename='publication')
 router.register('comments', CommentViewSet)
 router.register('opinions', OpinionViewSet)
 

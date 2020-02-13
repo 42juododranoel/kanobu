@@ -7,6 +7,7 @@ class PublicationSerializer(serializers.ModelSerializer):
     opinion_count = serializers.IntegerField(read_only=True)
     like_count = serializers.IntegerField(read_only=True)
     dislike_count = serializers.IntegerField(read_only=True)
+    current_user_opinion = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Publication
@@ -21,4 +22,5 @@ class PublicationSerializer(serializers.ModelSerializer):
             'opinion_count',
             'like_count',
             'dislike_count',
+            'current_user_opinion',
         ]
